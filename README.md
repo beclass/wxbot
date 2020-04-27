@@ -44,7 +44,7 @@
 
 ### 准备条件
 
-安装 [Node.js](https://nodejs.org/en/download/) (v8 以上版本)、[MongoDB](https://www.mongodb.org/downloads/)。  
+安装 [Node.js](https://nodejs.org/en/download/) (v10 以上版本)、[MongoDB](https://www.mongodb.org/downloads/)。  
 推荐安装 [cnpm](https://cnpmjs.org/) 
 
 ### 安装依赖
@@ -114,7 +114,9 @@ $ pm2 start pm2.config.js
 
 #### 最后
 
-欢迎添加我的小助手【小小】微信体验下哦，验证消息写【机器人】可以直接通过，和她聊聊天，或者加技术交流群一起交流
+### 好心的朋友赏个star，谢谢啦☕️
+
+欢迎添加我的小助手【小小】微信体验下哦，验证消息写【机器人】可以直接通过，和她聊聊天，或者加技术交流群一起交流。
 
 ![WechatIMG127](http://pic.loveyh.com/wxbot-wechat.png)
 
