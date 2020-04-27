@@ -1,0 +1,65 @@
+const { mongoose } = require('../config/db')
+const Schema = mongoose.Schema
+const schema = new Schema({
+  username: {
+    type: String,
+    required: true
+  },
+  password: String,
+  salt: String,
+  createTime: { type: Date, default: new Date() },
+  lastLoginT: Date,
+  loginIp: String,
+})
+const Auth = mongoose.model('auth', schema, 'auth')
+const { encryptPassword, createToken } = require('../util')
+const { Robot } = require('./robot')
+module.exports = {
+  Auth,
+  Dao: {
+    login: async (params) => {
+      try {
+        const user = await Auth.findOne({ username: params.username })
+        if (!user) throw { message: '用户不存在' }
+        if (user.password != encryptPassword(user.salt, params.password)) throw { message: '密码有误' }
+        return { token: createToken({ id: user.id }) }
+      } catch (err) { throw err }
+    },
+    getUser: async (userId) => {
+      try {
+        const user = await Auth.findOne({ _id: userId }, { username: 1, _id: 0 })
+        return user
+      } catch (err) { throw err }
+    },
+    getRobot: async (userId) => {
+      try {
+        let result = await Robot.findOne({ user: userId })
+        return result
+      } catch (err) { throw err }
+    },
+    addRobot: async (params) => {
+      try {
+        let result = await Robot.create(params)
+        return result
+      } catch (err) { throw err }
+    },
+    updateRobot: async (id, params) => {
+      try {
+        const result = await Robot.findByIdAndUpdate(id, params, {
+          new: true
+        }).exec();
+        return result
+      } catch (err) { throw err }
+    },
+
+  }
+}
+const init = async () => {
+  const exists = await Auth.exists({})
+  if (!exists) {
+    await Auth.create({ username: 'admin', salt: '123456', password: encryptPassword('123456', '111111') })
+    await Auth.create({ username: 'guest', salt: '123456', password: encryptPassword('123456', '111111') })
+  }
+}
+init()
+

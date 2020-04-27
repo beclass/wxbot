@@ -1,0 +1,39 @@
+{
+  "name": "wechat-robot",
+  "version": "1.0.0",
+  "description": "wechatrobot",
+  "author": "lwp",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/auth": "^4.9.1",
+    "@nuxtjs/axios": "^5.9.7",
+    "ant-design-vue": "^1.1.10",
+    "core-js": "^2.6.11",
+    "cross-env": "^5.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.6.2",
+    "koa-bodyparser": "^4.3.0",
+    "koa-jwt": "^3.6.0",
+    "koa-router": "^8.0.8",
+    "log4js": "^6.2.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.9.10",
+    "node-uuid": "^1.4.8",
+    "nuxt": "^2.0.0",
+    "qr-image": "^3.2.0",
+    "urllib": "^2.34.2",
+    "wechaty": "^0.38.4",
+    "wechaty-puppet-padplus": "^0.6.2"
+  },
+  "devDependencies": {
+    "node-sass": "^4.9.4",
+    "nodemon": "^1.18.9",
+    "sass-loader": "^7.1.0"
+  }
+}
