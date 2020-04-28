@@ -10,6 +10,7 @@ const schema = new Schema({
   robotId: String,
   roomJoinReply: { type: String, default: '你好，欢迎加入!' },
   autojoin: { type: Boolean, default: true },
+  joinCode: String,//群代号
 })
 
 const Group = mongoose.model('group', schema, 'group')

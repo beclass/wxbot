@@ -3,7 +3,7 @@
  * @Author: lwp
  * @Date: 2020-04-24 21:09:47
  * @LastEditors: lwp
- * @LastEditTime: 2020-04-27 19:05:47
+ * @LastEditTime: 2020-04-28 17:48:43
  */
 const logger = require('../util/logger')
 const { puppet_padplus_token } = require('../../config')
@@ -101,7 +101,7 @@ async function onFriendShip(friendship) {
         log = `${friendship.contact().name()}已经添加你为好友`;
         //给自己发个提示
         bot.say(`${friendship.contact().name()}添加了你为好友`);
-        await friendship.contact().say(`你好，我是机器人小助手${robot.nickName}\n\n加入技术交流群请回复 【加群】`);
+        await friendship.contact().say(`你好，我是机器人${robot.nickName}\n\n加入交流群请回复 【加群】\n\n您还可以跟我玩游戏，比如发送 成语接龙 试试`);
         break;
     }
   } catch (e) {

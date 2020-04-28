@@ -3,7 +3,7 @@
  * @Author: lwp
  * @Date: 2020-04-26 15:27:24
  * @LastEditors: lwp
- * @LastEditTime: 2020-04-27 19:04:14
+ * @LastEditTime: 2020-04-28 17:53:53
  */
 const { Message } = require('wechaty')
 const { Group } = require('../models/group')
@@ -35,7 +35,7 @@ module.exports = (bot, robot) => {
           let self = await msg.to()
           self = "@" + self.name()
           //获取消息内容并去掉 @+名字
-          const sendText = msg.text().replace(self, "")
+          const sendText = msg.text().replace(self, '')
           // 获取需要回复的内容
           const content = await getReply(sendText)
           // 返回消息，并@来自人
@@ -66,12 +66,13 @@ module.exports = (bot, robot) => {
  */
 async function isJoinRoom(msg, robot) {
   //关键字 加群 处理
-  if (msg.text() == "加群") {
-    const roomList = await Group.find({ robotId: robot.id, autojoin: true }, { topic: 1, id: 1 })
-    let content = `${robot.nickName}管理群聊有${roomList.length}个，回复群聊名即可加入哦\n\n`
+  if (msg.text() == '加群') {
+    const roomList = await Group.find({ robotId: robot.id, autojoin: true }, { topic: 1, id: 1, joinCode: 1 })
+    let content = `${robot.nickName}管理群聊有${roomList.length}个：\n\n`
     roomList.forEach(item => {
-      content += "【" + item.topic + "】" + "\n"
+      content += `${item.joinCode}：【${item.topic}】\n`
     })
+    content += '\n回复字母即可加入对应的群哦，比如发送 A'
     msg.say(content)
     return true
   }
@@ -85,18 +86,18 @@ async function isJoinRoom(msg, robot) {
  * @return {Promise} 
  */
 async function isRoomName(bot, msg) {
-  const group = await Group.findOne({ topic: msg.text() }, { id: 1 })
+  const group = await Group.findOne({ joinCode: msg.text() }, { id: 1 })
   if (group) {
     //通过群聊id获取群聊实例
     const room = await bot.Room.find({ id: group.id })
     // 判断是否在房间中 在-提示并结束
     if (await room.has(msg.from())) {
-      await msg.say("您已经在群聊中了")
+      await msg.say('您已经在群聊中了')
       return true
     }
     // 发送群邀请
     await room.add(msg.from())
-    await msg.say("已发送群邀请")
+    await msg.say('已发送群邀请')
     return true
   }
   return false

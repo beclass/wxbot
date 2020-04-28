@@ -27,7 +27,9 @@
 - 群聊设置
   - 设置入群欢迎语：当新的小伙伴加入群聊后自动 `@[新加入者]` 发一个文字欢迎
   - 是否开启自动加群：当你有多个群的时候，有的群不想通过机器人推送群邀请，则可以关闭
-  
+
+## 实际效果
+![首页](http://pic.loveyh.com/wxbot-0.png)
 
 ## 技术构成
 * ipad协议 [wechaty-puppet-padplus](https://github.com/wechaty/wechaty-puppet-padplus/)
