@@ -114,6 +114,6 @@ $ pm2 start pm2.config.js
 
 ### 好心的朋友赏个star，谢谢啦☕️
 
-欢迎扫码添加我的小助手【小小】体验下哦，验证消息写 <span style="color:red;font-size:20px">机器人</span> 即可直接通过，和她聊聊天，还可以加群一起交流。
+欢迎扫码添加我的小助手【小小】体验下哦，验证消息写 `机器人` 即可直接通过，和她聊聊天，还可以加群一起交流。
 
 ![WechatIMG127](http://pic.loveyh.com/wxbot-wechat.png)
