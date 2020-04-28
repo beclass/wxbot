@@ -1,5 +1,5 @@
 # wechat-robot
-基于 nodejs，wechaty，vue，nuxt 的开源个人微信机器人平台，现代化的 UI 和用户体验
+基于 nodejs，wechaty，vue，nuxt 个人微信号机器人平台，现代化的 UI 和用户体验
 
 [![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-green.svg)](https://github.com/chatie/wechaty)
 [![Wechaty开源激励计划](https://img.shields.io/badge/Wechaty-开源激励计划-green.svg)](https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty)
