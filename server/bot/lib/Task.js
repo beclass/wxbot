@@ -3,7 +3,7 @@
  * @Author: lwp
  * @Date: 2020-05-09 17:03:09
  * @LastEditors: lwp
- * @LastEditTime: 2020-05-14 12:34:47
+ * @LastEditTime: 2020-05-14 15:33:33
  */
 const logger = require('../../util/logger')
 const schedule = require('node-schedule')
@@ -51,15 +51,15 @@ const start = async (data) => {
     if (data.dayOfMonth) rule.dayOfMonth = data.dayOfMonth
     const sc = schedule.scheduleJob(rule, async () => {
       logger.info(`${data.name} 定时任务已启动------`)
-      if (data.factor == 0) {  //私聊
+      if (data.factor == 0) {
         const contact = await bot.Contact.find({ id: data.friendId })
         await contact.say(data.content)
       }
-      if (data.factor == 1) { //群聊
+      if (data.factor == 1) {
         const room = await bot.Room.find({ id: data.roomId })
         await room.say(data.content)
       }
-      if (data.factor == 2) { //通用群聊
+      if (data.factor == 2) {
         const groups = await Group.find({ control: true }, { id: 1 })
         for (let i = 0, len = groups.length; i < len; i++) {
           const room = await bot.Room.find({ id: groups[i].id })

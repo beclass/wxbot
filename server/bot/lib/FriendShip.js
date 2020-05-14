@@ -3,7 +3,7 @@
  * @Author: lwp
  * @Date: 2020-04-29 17:31:10
  * @LastEditors: lwp
- * @LastEditTime: 2020-05-09 11:52:44
+ * @LastEditTime: 2020-05-14 15:34:06
  */
 const logger = require('../../util/logger')
 const { Friendship } = require('wechaty')
@@ -34,7 +34,7 @@ const onFriendShip = async (friendship) => {
        */
       case Friendship.Type.Confirm:
         log = `${friendship.contact().name()}已经添加你为好友`;
-        //给自己发个提示
+        //发个提示
         bot.say(`${friendship.contact().name()}添加了你为好友`);
         if (robot.addFriendReply) await friendship.contact().say(robot.addFriendReply);
         break;

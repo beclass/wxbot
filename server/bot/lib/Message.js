@@ -3,7 +3,7 @@
  * @Author: lwp
  * @Date: 2020-04-26 15:27:24
  * @LastEditors: lwp
- * @LastEditTime: 2020-05-14 14:18:06
+ * @LastEditTime: 2020-05-14 15:31:13
  */
 const { Message } = require('wechaty')
 const { Group } = require('../../models/group')
@@ -27,16 +27,14 @@ async function onMessage(msg) {
     msg.from() ? msg.from().id : null
     }`
   )
-  if (msg.type() == Message.Type.Text) {  //文本消息
-    if (msg.room()) { //消息来自群聊
+  if (msg.type() == Message.Type.Text) {
+    if (msg.room()) { //来自群聊
       let room = await msg.room()
       const group = await Group.findOne({ id: room.id }, { control: 1 })
       if (!group||!group.control) return
-      if (await msg.mentionSelf()) {  //@了机器人
-        //获取提到自己的名字
+      if (await msg.mentionSelf()) { //@自己
         let self = await msg.to()
         self = '@' + self.name()
-        //获取消息内容并去掉 @+名字
         let sendText = msg.text().replace(self, '')
         sendText = sendText.trim()
         // 获取需要回复的内容
@@ -44,14 +42,10 @@ async function onMessage(msg) {
         if (!content) {
           content = await getReply(sendText)
         }
-        // 返回消息，并@来自人
-        if (sendText !== 'help') {
-          return room.say(content, msg.from())
-        }
         room.say(content)
         return
       }
-      //没有@机器人
+      //@成员
       let sendText = msg.text()
       let person = false
       if (sendText.indexOf('@') == 0) {
@@ -71,8 +65,8 @@ async function onMessage(msg) {
       }
       return
     }
-    //一对一聊天消息
-    if (await isRoomName(msg)) return  // 收到消息是群聊名
+    //私聊
+    if (await isRoomName(msg)) return
     let content = await keyWordReply(msg.text())
     if (!content) {
       content = await getReply(msg.text())
@@ -80,25 +74,22 @@ async function onMessage(msg) {
     await msg.say(content)
     return
   }
-  //console.log("不是文本消息")
 }
 /**
  * @description 收到消息是否群聊名称
  * @param {Object} bot 实例对象
  * @param {Object} msg 消息对象
- * @return {Promise} 
+ * @return {Bool} 
  */
 async function isRoomName(msg) {
   const group = await Group.findOne({ joinCode: msg.text() }, { id: 1 })
   if (group) {
     //通过群聊id获取群聊实例
     const room = await bot.Room.find({ id: group.id })
-    // 判断是否在房间中 在-提示并结束
     if (await room.has(msg.from())) {
       await msg.say('您已经在群聊中了')
       return true
     }
-    // 发送群邀请
     await room.add(msg.from())
     await msg.say('已发送群邀请')
     return true
@@ -117,11 +108,11 @@ async function keyWordReply(keyword, roomId, person, room) {
     const res = await Reply.findOne({ keyword: keyword, status: 1 }, { content: 1, type: 1, factor: 1, roomId: 1 })
     if (!res) return false
     if (roomId) { //群聊
-      if (res.type == 0) { //普通消息
-        if (res.factor == 0 || res.factor == 3) return res.content  //通用
-        if (res.factor == 2 && roomId == res.roomId) return res.content //属于此群聊
+      if (res.type == 0) {
+        if (res.factor == 0 || res.factor == 3) return res.content
+        if (res.factor == 2 && roomId == res.roomId) return res.content
       }
-      if (res.type == 2) { //踢人
+      if (res.type == 2) {
         if (person) {
           const group = await Group.findOne({ id: roomId }, { maxFoul: 1 })
           let foulCount = await Memory.countDocuments({ person: person, cmd: keyword, roomId: roomId })
@@ -149,7 +140,7 @@ async function keyWordReply(keyword, roomId, person, room) {
       content += '\n回复字母即可加入对应的群哦，比如发送 ' + roomList[0].joinCode
       return content
     }
-    if (res.factor == 0 || res.factor == 1) return res.content //通用
+    if (res.factor == 0 || res.factor == 1) return res.content
     return false
   } catch (err) { return false }
 }
@@ -157,7 +148,7 @@ async function keyWordReply(keyword, roomId, person, room) {
 /**
  * @description 机器人回复内容
  * @param {String} 收到消息
- * @return {Promise} 响应内容
+ * @return {String} 响应内容
  */
 async function getReply(keyword) {
   let url = TXHOST + 'robot/';

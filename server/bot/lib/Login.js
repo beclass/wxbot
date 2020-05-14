@@ -3,7 +3,7 @@
  * @Author: lwp
  * @Date: 2020-04-29 18:51:49
  * @LastEditors: lwp
- * @LastEditTime: 2020-05-12 11:07:19
+ * @LastEditTime: 2020-05-14 15:33:48
  */
 const logger = require('../../util/logger')
 const { Robot } = require('../../models/robot')
@@ -55,7 +55,7 @@ const onLogin = async (bot, robot_id, user) => {
   }
   //await Friend.insertMany(friendsA)
   global.bot = bot
-  await bot.say(robot.startSay) //启动提示语
+  await bot.say(robot.startSay)
   require('./Task').init()
   return {isLogin:true}
 }

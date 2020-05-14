@@ -105,7 +105,7 @@ $ npm start
 `String` 类型，[JWT](https://github.com/auth0/node-jsonwebtoken) 秘钥。
 
 #### tianApiKey
-`String` 天行机器人秘钥
+`String` 天行api秘钥
 
 ## 线上部署
 

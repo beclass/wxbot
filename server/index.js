@@ -73,9 +73,6 @@ app.use(jwtKoa({ secret: require('../config').secret }).unless({
 require('./config/db').connect()
 const {baseLogPath,appenders} = require('./config/log4js')
 const fs = require('fs');
-/**
- * 确定目录是否存在，如果不存在则创建目录
- */
 const confirmPath = function(pathStr) {
   if(!fs.existsSync(pathStr)) fs.mkdirSync(pathStr)
 }

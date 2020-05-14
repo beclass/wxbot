@@ -3,7 +3,7 @@
  * @Author: lwp
  * @Date: 2020-04-29 19:03:52
  * @LastEditors: lwp
- * @LastEditTime: 2020-05-04 23:01:43
+ * @LastEditTime: 2020-05-14 15:34:40
  */
 const logger = require('../util/logger')
 const { Wechaty } = require('wechaty')
@@ -13,8 +13,6 @@ const {onLogin,onLogout} = require('./lib/Login')
 const onFriendShip = require('./lib/FriendShip')
 const onMessage = require('./lib/Message')
 const {onRoomJoin,onRoomLeave} = require('./lib/Room')
-
-
 class Bot {
   constructor(_id, debug = false) {
     this._id = _id
