@@ -7,29 +7,41 @@
 * 首页
 ![首页](http://pic.loveyh.com/wxbot-1.png)
 * 后台管理
-![控制台](http://pic.loveyh.com/wxbot-2.png)
-![控制台](http://pic.loveyh.com/wxbot-3.png)
-![我的群聊](http://pic.loveyh.com/wxbot-4.png)
+![控制台](http://pic.666up.cn/wxbot/1.png)
+![自动回复]](http://pic.666up.cn/wxbot/2.png)
+![我的好友](http://pic.666up.cn/wxbot/3.png)
+![我的群聊](http://pic.666up.cn/wxbot/4.png)
+![定时任务](http://pic.666up.cn/wxbot/5.png)
 
 ## 在线实例
  [http://94.191.126.174:8081](http://94.191.126.174:8081)    
  用户名：guest   密码：111111
  #### 目前实现功能
  
-- 自动通过好友验证
-  - 当有人添加机器人时，判断验证消息关键字后通过或直接通过
-  - 通过验证后并自动回复添加者
-- 私聊关键字回复
-  - 例如回复 `加群` 推送群聊邀请
-- 智能聊天
-  - 群聊中通过 `@[机器人]xxx` 可以和机器人聊天
-  - 私聊发送消息即可聊天
-- 群聊设置
-  - 设置入群欢迎语：当新的小伙伴加入群聊后自动 `@[新加入者]` 发一个文字欢迎
-  - 是否开启自动加群：当你有多个群的时候，有的群不想通过机器人推送群邀请，则可以关闭
++ 控制台
+   - 绑定机器人
+   - 登录
+   - 自动通过好友验证关键词设置，当有人添加机器人时，关键词匹配后直接通过
+   - 好友验证通过自动回复
+   - 退出
++ 自动回复
+  + 普通消息
+    - 针对好友/某个群聊/所有群聊 设置关键词自动回复
+  + 加群邀请
+    - 机器人回复群聊列表，好友可以选择性进群
+  + 踢人指令
+    - 机器人识别指令，自动把成员移出群聊
++ 我的好友
+  - 单独对某个好友送消息
++ 我的群聊
+  - 群聊列表，管理所有群聊
+  - 设置群聊名称，发布公告，发送群消息
+  - 设置群聊基本信息，入群欢迎语，成员违规次数上限，是否受机器人控制
++ 定时任务
+  - 针对好友/某个群聊/所有群聊设置定时任务，机器人在指定时间会触发消息推送
 
 ## 实际效果
-![首页](http://pic.loveyh.com/wxbot-0.png)
+![首页](http://pic.666up.cn/wxbot/0.png)
 
 ## 技术构成
 * ipad协议 [wechaty-puppet-padplus](https://github.com/wechaty/wechaty-puppet-padplus/)
@@ -92,9 +104,6 @@ $ npm start
 #### secret
 `String` 类型，[JWT](https://github.com/auth0/node-jsonwebtoken) 秘钥。
 
-#### puppet_padplus_token
-`String` ipad协议 token
-
 #### tianApiKey
 `String` 天行机器人秘钥
 
@@ -112,10 +121,12 @@ $ cnpm i -g pm2
 $ pm2 start pm2.config.js
 ```
 
-#### 最后
+## 最后
 
-### 好心的朋友赏个star，谢谢啦☕️
+##### 有兴趣的朋友可以赏个star
 
-欢迎扫码添加我的小助手【小小】体验下哦，验证消息写 `机器人` 即可直接通过，和她聊聊天，还可以加群一起交流。
+前后将近折腾了一个月时间，还有很多可以完善的功能，代码上也有些不妥之处，欢迎大家多给意见，共同学习，让平台更完善。
 
-![WechatIMG127](http://pic.loveyh.com/wxbot-wechat.png)
+好玩的东西总要先体验一把，扫码加我的小助手，验证消息写 `机器人` 即可直接通过啦，加群一起交流也是可以的。
+
+![WechatIMG127](http://pic.666up.cn/wxbot/qrcode.png)

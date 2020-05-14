@@ -1,6 +1,6 @@
 module.exports = {
   apps: [{
-    name: "wx-robot",
+    name: "wxbot",
     script: "./server/index.js",
     env: {
       NODE_ENV: "development",

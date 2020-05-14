@@ -8,12 +8,13 @@ const schema = new Schema({
   addFriendReply: String, //添加好友之后回复内容
   name: String,
   avatar: String,
-  id: String,
+  id: String, //机器人id 唯一
   weixin: String,
   status: { type: Number, default: 0 }, //状态 0未启动 1已启动 
   user: { type: Schema.Types.ObjectId, ref: 'auth' },
   createTime: { type: Date, default: new Date() },
   modifyTime: { type: Date, default: new Date() },
+  token: String, //协议token
   lastLoginT: Date,
   lastLoginIp: String,
 })
@@ -21,6 +22,6 @@ const schema = new Schema({
 const Robot = mongoose.model('robot', schema, 'robot')
 
 module.exports = {
-  Robot
+  Robot,
 }
 

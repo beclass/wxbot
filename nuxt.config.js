@@ -49,6 +49,7 @@ module.exports = {
     '@nuxtjs/auth'
   ],
   router: {
+    //middleware: 'stats'
   },
   auth: {
     strategies: {
@@ -80,15 +81,6 @@ module.exports = {
     prefix: '/api', // 表示给请求url加个前缀 /api
     credentials: true // 表示跨域请求时是否需要使用凭证
   },
-  // proxy: {
-  //   '/api': {
-  //     target: 'http://120.55.160.92:8083/', // 目标接口域名
-  //     changeOrigin: true, // 表示是否跨域
-  //     pathRewrite: {
-  //       '^/api': '/', // 把 /api 替换成 /
-  //     }
-  //   }
-  // },
   /*
   ** Build configuration
   */

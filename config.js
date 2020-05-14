@@ -3,13 +3,13 @@ const local = {
   host: '0.0.0.0',
   mongoUrl: 'mongodb://localhost:27017/wxrobot',
   secret: '123456',
-  puppet_padplus_token: '',
-  tianApiKey: ''
+  tianApiKey:''
 }
 const development = {
 }
 const production = {
   port: 8081,
+  mongoUrl:'mongodb://username:password@ip:port/wxrobot',
 }
 let config = Object.assign(local, development)
 if (process.env.NODE_ENV == 'production') {

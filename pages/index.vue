@@ -1,26 +1,47 @@
 <template>
   <div class="container">
     <nuxt-link class="loginbtn" to="/admin">
-      <span v-if="!this.$auth.user">登录</span>
-      <span v-else>控制台</span>
+    <span v-if="!this.$auth.user" >登录</span>
+    <span v-else>控制台</span>
     </nuxt-link>
     <div>
-      <h1 class="title">wechat-robot</h1>
-      <h2 class="subtitle">让你的个人微信号成为微信机器人</h2>
+      <h1 class="title">
+        wechat-robot
+      </h1>
+      <h2 class="subtitle">
+        让你的个人微信号成为微信机器人
+      </h2>
       <div class="links">
-        <a href="javascript:void(0)" target="_blank" class="button--green">Documentation</a>
         <a
-          href="https://github.com/beclass/wechat-robot.git"
+          href="javascript:void(0)"
+          target="_blank"
+          class="button--green"
+        >
+          Documentation
+        </a>
+        <a
+          href="https://github.com/beclass/wxbot.git"
           target="_blank"
           class="button--grey"
-        >GitHub</a>
+        >
+          GitHub
+        </a>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+// import Vue from 'vue'
+
+// export default Vue.extend({
+  
+// })
+</script>
+
 <style scoped>
 .container {
-  position: absolute;
+  position:absolute;
   margin: 0 auto;
   text-align: center;
   color: #fff;
@@ -29,21 +50,16 @@
   height: 100%;
   width: 100%;
 }
-.loginbtn {
-  right: 10px;
-  position: absolute;
-  border-radius: 4px;
+.loginbtn{right: 10px;position:absolute; border-radius: 4px;
   border: 1px solid #fff;
   color: #fff;
   text-decoration: none;
   padding: 10px 30px;
 }
-.loginbtn a {
-  color: #fff;
-}
+.loginbtn a{color:#fff}
 .title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
@@ -61,8 +77,9 @@
 
 .links {
   padding-top: 15px;
-  color: #fff;
+  color: #fff
 }
+
 
 .button--green {
   display: inline-block;

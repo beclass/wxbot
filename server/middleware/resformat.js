@@ -3,7 +3,7 @@
  * @Author: lwp
  * @Date: 2020-04-20 19:13:19
  * @LastEditors: lwp
- * @LastEditTime: 2020-04-27 18:16:47
+ * @LastEditTime: 2020-05-04 23:15:59
  */
 const url_filter = function (pattern) {
   return async (ctx, next) => {
@@ -27,4 +27,4 @@ const url_filter = function (pattern) {
     }
   }
 }
-module.exports = url_filter;
+module.exports = url_filter

@@ -30,8 +30,8 @@ async function start() {
   }
   app.use((ctx) => {
     ctx.status = 200
-    ctx.respond = false // Bypass Koa's built-in response handling
-    ctx.req.ctx = ctx // This might be useful later on, e.g. in nuxtServerInit or with nuxt-stash
+    ctx.respond = false
+    ctx.req.ctx = ctx
     nuxt.render(ctx.req, ctx.res)
   })
   app.listen(port, host)
@@ -44,49 +44,49 @@ async function start() {
 app.use(async (ctx, next) => {
   const startT = new Date()
   let ms;
-  try {
+  try{
     await next().catch(err => {
       if (err.status === 401) {
         ctx.body = {
           errcode: 401,
           errmsg: 'Authentication'
         }
-      } else {
+      }else{
         throw err;
       }
     });
     ms = new Date() - startT;
-  } catch (error) {
+  }catch(error){
     console.log(error)
     ms = new Date() - startT
     logger.logError(ctx, error, ms)
-  }
+  }  
 });
 app.use(jwtKoa({ secret: require('../config').secret }).unless({
   path: [
     /^\/api\/auth\/login/,
     /^\/api\/auth\/logout/,
     /^\/api\/robot\/login/,
-    /^((?!\/api).)*$/
+    /^((?!\/api).)*$/ 
   ]
 }));
 require('./config/db').connect()
-const { baseLogPath, appenders } = require('./config/log4js')
+const {baseLogPath,appenders} = require('./config/log4js')
 const fs = require('fs');
 /**
  * 确定目录是否存在，如果不存在则创建目录
  */
-const confirmPath = function (pathStr) {
-  if (!fs.existsSync(pathStr)) fs.mkdirSync(pathStr)
+const confirmPath = function(pathStr) {
+  if(!fs.existsSync(pathStr)) fs.mkdirSync(pathStr)
 }
 /**
  * 初始化log相关目录
  */
-const initLogPath = function () {
-  if (baseLogPath) {
+const initLogPath = function(){
+  if(baseLogPath){
     confirmPath(baseLogPath)
-    for (var i = 0, len = appenders.length; i < len; i++) {
-      if (appenders[i].path) {
+    for(var i = 0, len = appenders.length; i < len; i++){
+      if(appenders[i].path){
         confirmPath(baseLogPath + appenders[i].path);
       }
     }
