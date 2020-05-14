@@ -1,5 +1,5 @@
 # wechat-robot
-基于 nodejs，wechaty，vue，nuxt 个人微信号机器人平台，现代化的 UI 和用户体验
+基于 nodejs，nuxt, wechaty 开发的个人微信号机器人平台，现代化 UI 和用户体验
 
 [![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-green.svg)](https://github.com/chatie/wechaty)
 [![Wechaty开源激励计划](https://img.shields.io/badge/Wechaty-开源激励计划-green.svg)](https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty)
@@ -16,7 +16,7 @@
 ## 在线实例
  [http://94.191.126.174:8081](http://94.191.126.174:8081)    
  用户名：guest   密码：111111
- #### 目前实现功能
+ #### 实现功能
  
 + 控制台
    - 绑定机器人
@@ -41,16 +41,15 @@
   - 针对好友/某个群聊/所有群聊设置定时任务，机器人在指定时间会触发消息推送
 
 ## 实际效果
-![首页](http://pic.666up.cn/wxbot/0.png)
+![首页](http://pic.666up.cn/wxbot/chat.png)
 
 ## 技术构成
-* ipad协议 [wechaty-puppet-padplus](https://github.com/wechaty/wechaty-puppet-padplus/)
 * 服务端 [Node.js](https://nodejs.org/)
 * SSR框架 [NuxtJS](https://nuxtjs.org/)
 * 前端框架 [Vue](https://vuejs.org/)
 * UI组件 [Ant Design of Vue](https://www.antdv.com/docs/vue/introduce-cn/)
 * 持久化 [MongoDB](https://www.mongodb.org/)
-* 身份验证 [@nuxtjs/auth](https://auth.nuxtjs.org/)
+* ipad协议 [wechaty-puppet-padplus](https://github.com/wechaty/wechaty-puppet-padplus/)
 
 ## 快速开始
 
@@ -127,6 +126,6 @@ $ pm2 start pm2.config.js
 
 前后将近折腾了一个月时间，还有很多可以完善的功能，代码上也有些不妥之处，欢迎大家多给意见，共同学习，让平台更完善。
 
-好玩的东西总要先体验一把，扫码加我的小助手，验证消息写 `机器人` 即可直接通过啦，加群一起交流也是可以的。
+好玩的东西总要先体验一把，扫码加我的小助手，验证消息写 `机器人` 即可直接通过啦，也可以加群交流。
 
 ![WechatIMG127](http://pic.666up.cn/wxbot/qrcode.png)
