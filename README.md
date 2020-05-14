@@ -8,7 +8,7 @@
 ![首页](http://pic.loveyh.com/wxbot-1.png)
 * 后台管理
 ![控制台](http://pic.666up.cn/wxbot/1.png)
-![自动回复]](http://pic.666up.cn/wxbot/2.png)
+![自动回复](http://pic.666up.cn/wxbot/2.png)
 ![我的好友](http://pic.666up.cn/wxbot/3.png)
 ![我的群聊](http://pic.666up.cn/wxbot/4.png)
 ![定时任务](http://pic.666up.cn/wxbot/5.png)
