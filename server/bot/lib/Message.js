@@ -3,7 +3,7 @@
  * @Author: lwp
  * @Date: 2020-04-26 15:27:24
  * @LastEditors: lwp
- * @LastEditTime: 2020-05-14 15:31:13
+ * @LastEditTime: 2020-05-15 11:06:12
  */
 const { Message } = require('wechaty')
 const { Group } = require('../../models/group')
@@ -31,7 +31,7 @@ async function onMessage(msg) {
     if (msg.room()) { //来自群聊
       let room = await msg.room()
       const group = await Group.findOne({ id: room.id }, { control: 1 })
-      if (!group||!group.control) return
+      if (!group || !group.control) return
       if (await msg.mentionSelf()) { //@自己
         let self = await msg.to()
         self = '@' + self.name()

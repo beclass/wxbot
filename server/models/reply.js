@@ -3,7 +3,7 @@
  * @Author: lwp
  * @Date: 2020-05-06 18:24:06
  * @LastEditors: lwp
- * @LastEditTime: 2020-05-11 18:29:21
+ * @LastEditTime: 2020-05-15 11:08:25
  */
 const { mongoose } = require('../config/db')
 const Schema = mongoose.Schema
@@ -38,8 +38,6 @@ module.exports = {
     },
     add: async (params) => {
       try {
-        //同一关键词，同一个群/同一个私聊/通用/通用群聊 只能有一个
-        //同一个关键词，不同的的群 可以有不同的回复  先优先 群聊/私聊  通用其次
         let query = {keyword:params.keyword,factor:params.factor,robotId:params.robotId}
         if(params.factor==2){
           query.roomId = params.roomId

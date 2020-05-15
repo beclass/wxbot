@@ -3,7 +3,7 @@
  * @Author: lwp
  * @Date: 2020-05-06 19:06:00
  * @LastEditors: lwp
- * @LastEditTime: 2020-05-11 18:31:36
+ * @LastEditTime: 2020-05-15 11:08:16
  */
 const { mongoose } = require('../config/db')
 const Schema = mongoose.Schema
@@ -18,9 +18,9 @@ const schema = new Schema({
   robotId: String, //机器人id
 
   unit: Number, //时间单位 
-  dayOfWeek: Number, //每周几
+  dayOfWeek: Number,
   month: Number,
-  dayOfMonth: Number, //每月几号
+  dayOfMonth: Number,
   hour: Number,
   minute: Number,
   second: Number,

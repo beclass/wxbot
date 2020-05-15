@@ -55,8 +55,6 @@
   </a-card>
 </a-spin>
 </template>
-
-
 <script lang="javascript">
 import Vue from 'vue';
 import QRCode from 'qrcodejs2'
@@ -77,8 +75,8 @@ export default Vue.extend({
         addFriendKeywords:['机器人']
       },
       rules,
-      timer:false, //启动定时
-      timerTask:0, //定时任务
+      timer:false,
+      timerTask:0,
       refreshCount:0
     };
   },
@@ -132,15 +130,14 @@ export default Vue.extend({
         this.loading = false
         return this.$notification.warning({message:'操作提示',description:'机器人已经退出'})
       }
-      //登录
       const res = await this.$axios.$post('/robot/login', {id:this.robot._id})
       this.loading= false
-      if(res.isLogin){ //已经登录
+      if(res.isLogin){
         this.initData()
         this.$notification.success({message:'登录提示',description:'机器人登录成功'})
         return
       }
-      if(res.qrcode){ //扫码登录
+      if(res.qrcode){
         this.showQrcode = true
         this.$nextTick (function () {
           this.createQrcode(res.qrcode)

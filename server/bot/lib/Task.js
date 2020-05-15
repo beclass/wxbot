@@ -3,7 +3,7 @@
  * @Author: lwp
  * @Date: 2020-05-09 17:03:09
  * @LastEditors: lwp
- * @LastEditTime: 2020-05-14 15:33:33
+ * @LastEditTime: 2020-05-15 11:06:30
  */
 const logger = require('../../util/logger')
 const schedule = require('node-schedule')
@@ -15,7 +15,7 @@ let tasks = {}
  */
 const init = async () => {
   logger.info('初始化任务...')
-  const list = await Task.find({ status: 1,robotId: bot.id })
+  const list = await Task.find({ status: 1, robotId: bot.id })
   for (let i = 0; i < list.length; i++) {
     await start(list[i])
   }

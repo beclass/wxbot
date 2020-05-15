@@ -4,15 +4,15 @@ const schema = new Schema({
   id: String, //群id
   adminIdList:Array,
   avatar:String,
-  ownerId:String, //群主id
+  ownerId:String,
   topic:String,
   memberIdList:{ type: Array },
   robotId:String, //机器人id
   roomJoinReply:{type:String,default:'你好，欢迎加入!'},
   autojoin: { type: Boolean, default: false },
-  joinCode:String,//群代号
-  maxFoul:{ type: Number, default: 3 }, //成员违规最大限度
-  control: { type: Boolean, default: false }, //是否受控制
+  joinCode:String,
+  maxFoul:{ type: Number, default: 3 },
+  control: { type: Boolean, default: false },
 })
 const Group = mongoose.model('group', schema, 'group')
 module.exports = {
