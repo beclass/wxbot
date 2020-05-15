@@ -3,7 +3,7 @@
  * @Author: lwp
  * @Date: 2020-04-26 15:27:24
  * @LastEditors: lwp
- * @LastEditTime: 2020-05-15 11:06:12
+ * @LastEditTime: 2020-05-15 18:15:56
  */
 const { Message } = require('wechaty')
 const { Group } = require('../../models/group')
@@ -130,7 +130,7 @@ async function keyWordReply(keyword, roomId, person, room) {
       return false
     }
     //私聊
-    if (res.type == 1) { //群邀请
+    if (res.type == 1) {
       const robot = await Robot.findOne({ id: bot.id }, { id: 1, nickName: 1 })
       const roomList = await Group.find({ robotId: robot.id, autojoin: true }, { topic: 1, id: 1, joinCode: 1 })
       let content = `${robot.nickName}管理群聊有${roomList.length}个：\n\n`

@@ -5,12 +5,9 @@ const bodyParser = require('koa-bodyparser')
 const jwtKoa = require('koa-jwt')
 const logger = require('./util/logger')
 const app = new Koa()
-// Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
 config.dev = app.env !== 'production'
-app.use(bodyParser({
-  extendTypes: ['json', 'text', 'form']
-}))
+app.use(bodyParser({ extendTypes: ['json', 'text', 'form'] }))
 async function start() {
   // Instantiate nuxt.js
   const nuxt = new Nuxt(config)
@@ -19,8 +16,6 @@ async function start() {
     port = process.env.PORT || 3001
   } = nuxt.options.server
   await nuxt.ready()
-  // Build in development
-  //格式化响应数据
   app.use(require('./middleware/resformat')('^/api'))
   const api = require('./routes/api')
   app.use(api.routes(), api.allowedMethods())
@@ -40,50 +35,45 @@ async function start() {
     badge: true
   })
 }
-//全局错误处理
+//error
 app.use(async (ctx, next) => {
   const startT = new Date()
-  let ms;
-  try{
+  let ms
+  try {
     await next().catch(err => {
       if (err.status === 401) {
-        ctx.body = {
-          errcode: 401,
-          errmsg: 'Authentication'
-        }
-      }else{
-        throw err;
-      }
-    });
+        ctx.body = { errcode: 401, errmsg: 'Authentication' }
+      } else { throw err }
+    })
     ms = new Date() - startT;
-  }catch(error){
+  } catch (error) {
     console.log(error)
     ms = new Date() - startT
     logger.logError(ctx, error, ms)
-  }  
-});
+  }
+})
 app.use(jwtKoa({ secret: require('../config').secret }).unless({
   path: [
     /^\/api\/auth\/login/,
     /^\/api\/auth\/logout/,
     /^\/api\/robot\/login/,
-    /^((?!\/api).)*$/ 
+    /^((?!\/api).)*$/
   ]
 }));
 require('./config/db').connect()
-const {baseLogPath,appenders} = require('./config/log4js')
+const { baseLogPath, appenders } = require('./config/log4js')
 const fs = require('fs');
-const confirmPath = function(pathStr) {
-  if(!fs.existsSync(pathStr)) fs.mkdirSync(pathStr)
+const confirmPath = function (pathStr) {
+  if (!fs.existsSync(pathStr)) fs.mkdirSync(pathStr)
 }
 /**
- * 初始化log相关目录
+ * init log
  */
-const initLogPath = function(){
-  if(baseLogPath){
+const initLogPath = function () {
+  if (baseLogPath) {
     confirmPath(baseLogPath)
-    for(var i = 0, len = appenders.length; i < len; i++){
-      if(appenders[i].path){
+    for (var i = 0, len = appenders.length; i < len; i++) {
+      if (appenders[i].path) {
         confirmPath(baseLogPath + appenders[i].path);
       }
     }

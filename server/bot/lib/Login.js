@@ -3,7 +3,7 @@
  * @Author: lwp
  * @Date: 2020-04-29 18:51:49
  * @LastEditors: lwp
- * @LastEditTime: 2020-05-14 15:33:48
+ * @LastEditTime: 2020-05-15 18:15:23
  */
 const logger = require('../../util/logger')
 const { Robot } = require('../../models/robot')
@@ -53,7 +53,6 @@ const onLogin = async (bot, robot_id, user) => {
       await Friend.updateOne({_id:friend._id},friendsA[j])
     }
   }
-  //await Friend.insertMany(friendsA)
   global.bot = bot
   await bot.say(robot.startSay)
   require('./Task').init()

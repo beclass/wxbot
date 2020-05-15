@@ -3,7 +3,7 @@
  * @Author: lwp
  * @Date: 2020-05-09 17:03:09
  * @LastEditors: lwp
- * @LastEditTime: 2020-05-15 11:06:30
+ * @LastEditTime: 2020-05-15 16:56:40
  */
 const logger = require('../../util/logger')
 const schedule = require('node-schedule')
@@ -19,7 +19,7 @@ const init = async () => {
   for (let i = 0; i < list.length; i++) {
     await start(list[i])
   }
-  logger.info(`已初始化${tasks.length}个任务`)
+  logger.info(`已初始化${list.length}个任务`)
 }
 /**
  * 重启任务
