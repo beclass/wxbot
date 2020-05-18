@@ -3,7 +3,7 @@
  * @Author: lwp
  * @Date: 2020-04-26 14:28:26
  * @LastEditors: lwp
- * @LastEditTime: 2020-04-26 14:29:32
+ * @LastEditTime: 2020-05-15 18:29:05
  */
 const log4js = require('log4js');
 let log_config = require('../config/log4js');
@@ -40,43 +40,29 @@ logUtil.logInfo = function (info) {
 };
 const formatInfo = function (info) {
   let logText = new String();
-  //响应日志开始
   logText += "\n" + "***************info log start ***************" + "\n";
-  //响应内容
   logText += "info detail: " + "\n" + JSON.stringify(info) + "\n";
-  //响应日志结束
   logText += "*************** info log end ***************" + "\n";
   return logText;
 }
 //格式化响应日志
 const formatRes = function (ctx, resTime) {
   let logText = new String();
-  //响应日志开始
   logText += "\n" + "*************** response log start ***************" + "\n";
-  //添加请求日志
   logText += formatReqLog(ctx.request, resTime);
-  //响应状态码
   logText += "response status: " + ctx.status + "\n";
-  //响应内容
   logText += "response body: " + "\n" + JSON.stringify(ctx.body) + "\n";
-  //响应日志结束
   logText += "*************** response log end ***************" + "\n";
   return logText;
 }
 //格式化错误日志
 const formatError = function (ctx, err, resTime) {
   let logText = new String();
-  //错误信息开始
   logText += "\n" + "*************** error log start ***************" + "\n";
-  //添加请求日志
   logText += formatReqLog(ctx.request, resTime);
-  //错误名称
   logText += "err name: " + err.name + "\n";
-  //错误信息
   logText += "err message: " + err.message + "\n";
-  //错误详情
   logText += "err stack: " + err.stack + "\n";
-  //错误信息结束
   logText += "*************** error log end ***************" + "\n";
   return logText;
 };
@@ -84,21 +70,13 @@ const formatError = function (ctx, err, resTime) {
 const formatReqLog = function (req, resTime) {
   let logText = new String();
   const method = req.method;
-  //访问方法
   logText += "request method: " + method + "\n";
-  //请求原始地址
   logText += "request originalUrl:  " + req.originalUrl + "\n";
-  //客户端ip
   logText += "request client ip:  " + req.ip + "\n";
-  //开始时间
-  let startTime;
-  //请求参数
   if (method === 'GET') {
     logText += "request query:  " + JSON.stringify(req.query) + "\n";
-    // startTime = req.query.requestStartTime;
   } else {
     logText += "request body: " + "\n" + JSON.stringify(req.body) + "\n";
-    // startTime = req.body.requestStartTime;
   }
   //服务器响应时间
   logText += "response time: " + resTime + "\n";

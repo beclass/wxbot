@@ -30,7 +30,7 @@ module.exports = {
       try {
         const user = await Auth.findOne({ _id:userId },{ username:1})
         const robot = await Robot.findOne({user:user._id},{id:1})
-        return {username:user.username,robotId:robot&&robot.id||null}
+        return {username:user.username,robotId:robot&&robot.id||null,robot_id:robot&&robot._id||null}
       } catch (err) { throw err }
     },
     getRobot:async(id)=>{

@@ -99,8 +99,8 @@ export default Vue.extend({
       })
     },
     async initData() {
-      if(!this.$auth.user.robotId) return
-      let res = await this.$axios.$get('/admin/robot/'+this.$auth.user.robotId);
+      if(!this.$auth.user.robot_id) return
+      let res = await this.$axios.$get('/admin/robot/'+this.$auth.user.robot_id);
       if (res) {
         this.robot = res;
         this.loading=false
@@ -118,6 +118,7 @@ export default Vue.extend({
         res = await this.$axios.$put('/admin/robot/' + _id, vals);
       } else {
         res = await this.$axios.$post('/admin/robot', formData);
+        this.$auth.user.robot_id = res._id
       }
       this.initData();
       this.visible = false;

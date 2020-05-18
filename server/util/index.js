@@ -20,17 +20,12 @@ const generateStr = (len, charType) => {
   }
   return str;
 }
-
 const createToken = (payload = {}, expiresIn) => {
   return jwt.sign(payload, secret, { expiresIn: expiresIn || '24h' });
 }
-
 const verifyToken = (token) => {
   return jwt.verify(token.split(' ')[1], secret);
 }
-
-
-/*search$$field$$exact       exact:精确搜素    */
 const parseSearch = function (params) {
   let result = {};
   for (let key in params) {
@@ -123,6 +118,5 @@ const parseSearch = function (params) {
   }
   return result;
 };
-
 module.exports = { encryptPassword, generateStr, createToken, verifyToken, parseSearch }
 
