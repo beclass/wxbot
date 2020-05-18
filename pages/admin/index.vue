@@ -102,8 +102,9 @@ export default Vue.extend({
       if(!this.$auth.user.robot_id) return
       let res = await this.$axios.$get('/admin/robot/'+this.$auth.user.robot_id);
       if (res) {
-        this.robot = res;
-        this.loading=false
+        this.robot = res
+        this.loading = false
+        if(res.id) this.$auth.user.robotId = res.id
         if(res.status==1&&this.showQrcode){
           this.showQrcode = false
           this.$notification.success({message:'登录提示',description:'机器人登录成功'})
