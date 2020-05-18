@@ -8,44 +8,44 @@ const schema = new Schema({
   password: String,
   salt: String,
   createTime: { type: Date, default: new Date() },
-  lastLoginT:Date,
-  loginIp:String,
+  lastLoginT: Date,
+  loginIp: String,
 })
 
 const Auth = mongoose.model('auth', schema, 'auth')
 const { encryptPassword, createToken } = require('../util')
-const {Robot} = require('./robot')
+const { Robot } = require('./robot')
 module.exports = {
   Auth,
   Dao: {
     login: async (params) => {
       try {
         const user = await Auth.findOne({ username: params.username })
-        if(!user) throw {message:'用户不存在'}
-        if(user.password!=encryptPassword(user.salt,params.password)) throw {message:'密码有误'}
-        return {token:createToken({id:user.id})}
+        if (!user) throw { message: '用户不存在' }
+        if (user.password != encryptPassword(user.salt, params.password)) throw { message: '密码有误' }
+        return { token: createToken({ id: user.id }) }
       } catch (err) { throw err }
     },
-    getUser:async(userId)=>{
+    getUser: async (userId) => {
       try {
-        const user = await Auth.findOne({ _id:userId },{ username:1})
-        const robot = await Robot.findOne({user:user._id},{id:1})
-        return {username:user.username,robotId:robot&&robot.id||null,robot_id:robot&&robot._id||null}
+        const user = await Auth.findOne({ _id: userId }, { username: 1 })
+        const robot = await Robot.findOne({ user: user._id }, { id: 1 })
+        return { username: user.username, robotId: robot && robot.id || null, robot_id: robot && robot._id || null }
       } catch (err) { throw err }
     },
-    getRobot:async(id)=>{
+    getRobot: async (_id) => {
       try {
-        const result = await Robot.findOne({ id:id })
+        const result = await Robot.findOne({ _id })
         return result
       } catch (err) { throw err }
     },
-    addRobot:async(params)=>{
+    addRobot: async (params) => {
       try {
         let result = await Robot.create(params)
         return result
       } catch (err) { throw err }
     },
-    updateRobot:async(id,params)=>{
+    updateRobot: async (id, params) => {
       try {
         const result = await Robot.findByIdAndUpdate(id, params, {
           new: true
@@ -58,9 +58,9 @@ module.exports = {
 
 const init = async () => {
   const exists = await Auth.exists({})
-  if (!exists){
+  if (!exists) {
     await Auth.create({ username: 'admin', salt: '123456', password: encryptPassword('123456', '111111') })
     await Auth.create({ username: 'guest', salt: '123456', password: encryptPassword('123456', '111111') })
-  } 
+  }
 }
 init()
