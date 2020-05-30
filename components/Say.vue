@@ -17,11 +17,10 @@
   </a-modal>
 </template>
 <script>
-import Vue from "vue";
 const rules = {
   content: [{ required: true, message: "不能为空", trigger: "blur" }]
 };
-export default Vue.extend({
+export default {
   props: {
     say: { type: Object, default: () => ({}) }
   },
@@ -42,5 +41,5 @@ export default Vue.extend({
       });
     }
   }
-});
+}
 </script>

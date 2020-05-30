@@ -56,12 +56,11 @@
 </a-spin>
 </template>
 <script lang="javascript">
-import Vue from 'vue';
 import QRCode from 'qrcodejs2'
 const rules = {
   nickName: [{ required: true, message: '名称不能为空', trigger: 'blur' }]
 };
-export default Vue.extend({
+export default {
   layout: 'admin',
   data() {
     return {
@@ -176,7 +175,7 @@ export default Vue.extend({
   destroyed() {
     clearInterval(this.timerTask)  
   }
-});
+}
 </script>
 <style lang="scss" scoped>
 .rInfo{color: #666;

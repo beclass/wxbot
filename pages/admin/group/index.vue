@@ -62,9 +62,8 @@
   </div>
 </template>
 <script lang="javascript">
-import Vue from "vue";
 import SayV from "~/components/Say.vue";
-export default Vue.extend({
+export default {
   layout: "admin",
   // async asyncData ({ $axios }) {
   // },
@@ -144,7 +143,7 @@ export default Vue.extend({
       }
     }
   }
-});
+}
 </script>
 
 <style scoped>

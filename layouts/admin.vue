@@ -66,7 +66,7 @@
         <nuxt />
       </a-layout-content>
       <a-layout-footer :style="{ textAlign: 'center' }">
-        <a href="https://github.com/beclass/wxbot.git" target="_blank">wechat-robot@2020</a>
+        <a href="https://github.com/beclass/wxbot.git" target="_blank">wxbot-robot@2020</a>
       </a-layout-footer>
     </a-layout>
   </a-layout>
@@ -82,7 +82,7 @@ const IconFont = Icon.createFromIconfontCN({
 Vue.filter("toDate", date => {
   return moment(date).format("YYYY-MM-DD HH:mm:ss");
 });
-export default Vue.extend({
+export default {
   middleware: "auth",
   components: {
     IconFont
@@ -133,7 +133,7 @@ export default Vue.extend({
       return path;
     }
   }
-});
+}
 </script>
 <style>
 body {
@@ -147,6 +147,7 @@ body {
   text-align: center;
   font-weight: bold;
   font-size: 20px;
+  padding-top: 4px;
 }
 
 .layout-admin .trigger {

@@ -34,7 +34,6 @@
 </template>
 
 <script>
-import Vue from "vue";
 import SayV from "~/components/Say.vue";
 const columns = [
   {
@@ -80,7 +79,7 @@ const columns = [
   }
 ];
 
-export default Vue.extend({
+export default {
   layout: "admin",
   components: { SayV },
   data() {
@@ -128,5 +127,5 @@ export default Vue.extend({
       }
     }
   }
-});
+}
 </script>

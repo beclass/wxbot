@@ -47,14 +47,13 @@
   </a-modal>
 </template>
 <script>
-import Vue from "vue";
 import { replyTypes, factorsList, statusList } from "../enume";
 const rules = {
   keyword: [{ required: true, message: "名称不能为空", trigger: "blur" }],
   type: [{ required: true, message: "请选择事件类型", trigger: "change" }],
   factor: [{ required: true, message: "场景不能为空", trigger: "change" }]
 };
-export default Vue.extend({
+export default {
   props: {
     temp: { type: Object, default: () => ({}) }
   },
@@ -98,5 +97,5 @@ export default Vue.extend({
       });
     }
   }
-});
+}
 </script>

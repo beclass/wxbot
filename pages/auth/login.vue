@@ -23,8 +23,7 @@
   </div>
 </template>
 <script lang="javascript">
-import Vue from "vue";
-export default Vue.extend({
+export default {
   data() {
     return {
       form: this.$form.createForm(this, {})
@@ -40,7 +39,7 @@ export default Vue.extend({
       });
     }
   }
-});
+}
 </script>
 <style scoped>
 .container {

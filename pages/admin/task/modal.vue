@@ -67,7 +67,6 @@
   </a-modal>
 </template>
 <script>
-import Vue from "vue";
 import { taskFactors, statusList, units } from "../enume";
 const rules = {
   name: [{ required: true, message: "不能为空", trigger: "blur" }],
@@ -81,7 +80,7 @@ const rules = {
   second: [{ required: true, message: "不能为空", trigger: "blur" }]
 };
 let timeout;
-export default Vue.extend({
+export default {
   props: {
     temp: { type: Object, default: () => ({}) }
   },
@@ -139,5 +138,5 @@ export default Vue.extend({
       if (res) this.friends = res.list;
     }
   }
-});
+}
 </script>

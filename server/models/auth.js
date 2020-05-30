@@ -45,11 +45,9 @@ module.exports = {
         return result
       } catch (err) { throw err }
     },
-    updateRobot: async (id, params) => {
+    updateRobot: async (_id, params) => {
       try {
-        const result = await Robot.findByIdAndUpdate(id, params, {
-          new: true
-        }).exec();
+        const result = await Robot.updateOne({_id},params);
         return result
       } catch (err) { throw err }
     },

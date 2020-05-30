@@ -39,7 +39,6 @@
 </template>
 
 <script>
-import Vue from "vue";
 import { replyTypes, factorsList, statusList } from "../enume";
 import ModalV from "./modal";
 const columns = [
@@ -87,7 +86,7 @@ const columns = [
   }
 ];
 
-export default Vue.extend({
+export default {
   layout: "admin",
   components: { ModalV },
   data() {
@@ -164,5 +163,5 @@ export default Vue.extend({
       this.getList();
     }
   }
-});
+}
 </script>

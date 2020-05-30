@@ -43,7 +43,6 @@
 </template>
 
 <script>
-import Vue from "vue";
 import { taskFactors, taskTypes, statusList, units } from "../enume";
 import ModalV from "./modal";
 const columns = [
@@ -92,7 +91,7 @@ const columns = [
     scopedSlots: { customRender: "action" }
   }
 ];
-export default Vue.extend({
+export default {
   layout: "admin",
   components: { ModalV },
   data() {
@@ -170,5 +169,5 @@ export default Vue.extend({
       this.getList();
     }
   }
-});
+}
 </script>
