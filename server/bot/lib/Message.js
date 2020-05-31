@@ -3,7 +3,7 @@
  * @Author: lwp
  * @Date: 2020-04-26 15:27:24
  * @LastEditors: lwp
- * @LastEditTime: 2020-05-15 18:15:56
+ * @LastEditTime: 2020-05-31 18:02:12
  */
 const { Message } = require('wechaty')
 const { Group } = require('../../models/group')
@@ -51,8 +51,8 @@ async function onMessage(msg) {
       if (sendText.indexOf('@') == 0) {
         const str = sendText.replace('@', '').split(' ')
         if (!str[1]) return
-        person = str[0]
-        sendText = str[1]
+        person = str[0].trim()
+        sendText = str[1].trim()
       }
       let content = await keyWordReply(sendText, room.id, person, room)
       if (content) {
