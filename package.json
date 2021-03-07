@@ -32,8 +32,8 @@
     "nuxt": "^2.0.0",
     "qrcodejs2": "^0.0.2",
     "urllib": "^2.34.2",
-    "wechaty": "^0.47.7",
-    "wechaty-puppet-padplus": "^0.7.34",
+    "wechaty": "^0.56.6",
+    "wechaty-puppet-padlocal": "^0.2.33",
     "wechaty-plugin-contrib": "^0.14.12"
   },
   "devDependencies": {

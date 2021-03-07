@@ -7,8 +7,8 @@
  */
 
 const { Wechaty } = require('wechaty')
-const { PuppetPadplus } = require('wechaty-puppet-padplus')
-const { PUPPET_PADPLUS_TOKEN, BOT_NAME } = require('./config')
+const { PuppetPadlocal } = require('wechaty-puppet-padlocal')
+const { PUPPET_PADLOCAL_TOKEN, BOT_NAME } = require('./config')
 const FriendPass = require('./plugin/friends-pass')
 const RoomJoin = require('./plugin/room-join')
 const RoomInvite = require('./plugin/room-invite')
@@ -21,8 +21,8 @@ const {
 } = require('wechaty-plugin-contrib') //官方插件
 // 初始化
 const bot = new Wechaty({
-  puppet: new PuppetPadplus({
-    token: PUPPET_PADPLUS_TOKEN,
+  puppet: new PuppetPadlocal({
+    token: PUPPET_PADLOCAL_TOKEN,
   }),
   name: BOT_NAME,
 })

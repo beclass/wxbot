@@ -52,7 +52,7 @@
 * 前端框架 [Vue](https://vuejs.org/)
 * UI组件 [Ant Design of Vue](https://www.antdv.com/docs/vue/introduce-cn/)
 * 持久化 [MongoDB](https://www.mongodb.org/)
-* ipad协议 [wechaty-puppet-padplus](https://github.com/wechaty/wechaty-puppet-padplus/)
+* ipad协议 [wechaty-puppet-padlocal](https://github.com/padlocal/wechaty-puppet-padlocal/)
 
 ## 快速开始
 

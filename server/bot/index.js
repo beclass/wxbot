@@ -7,7 +7,8 @@
  */
 const logger = require('../util/logger')
 const { Wechaty } = require('wechaty')
-const { PuppetPadplus } = require('wechaty-puppet-padplus')
+// const { PuppetPadplus } = require('wechaty-puppet-padplus')
+const { PuppetPadlocal } = require('wechaty-puppet-padlocal')
 const { Robot } = require('../models/robot')
 const {onLogin,onLogout} = require('./lib/Login')
 const onFriendShip = require('./lib/FriendShip')
@@ -26,7 +27,7 @@ class Bot {
     if(!robot) throw {message:'机器人不存在'}
     if(!robot.token) throw {message:'缺少协议token'}
     let bot = new Wechaty({
-      puppet: new PuppetPadplus({
+      puppet: new PuppetPadlocal({
         token: robot.token
       }),
       name: robot.nickName,

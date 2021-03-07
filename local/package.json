@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "wechaty": "^0.47.7",
-    "wechaty-puppet-padplus": "^0.7.34",
+    "wechaty-puppet-padlocal": "^0.7.34",
     "wechaty-plugin-contrib": "^0.14.12"
   }
 }
