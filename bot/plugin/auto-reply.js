@@ -18,8 +18,7 @@ module.exports = function AutoReply(config = {}) {
       if (msg.self()) return
       console.log("=============================")
       let str = `msg : ${msg}`
-      str += `    from: ${msg.from() ? msg.from().name() : 'null'}: ${
-        msg.from() ? msg.from().id : 'null'
+      str += `    from: ${msg.from() ? msg.from().name() : 'null'}: ${msg.from() ? msg.from().id : 'null'
         }`
       console.log(str)
       // console.log(`to: ${msg.to()}`)
@@ -32,7 +31,7 @@ module.exports = function AutoReply(config = {}) {
         if (msg.room()) { //来自群聊
           let room = await msg.room()
           if (await msg.mentionSelf()) { //@自己
-            let self = await msg.to()
+            let self = await msg.from()
             self = '@' + self.name()
             let sendText = msg.text().replace(self, '')
             sendText = sendText.trim()

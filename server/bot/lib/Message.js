@@ -23,8 +23,7 @@ async function onMessage(msg) {
   console.log("=============================")
   console.log(`msg : ${msg}`)
   console.log(
-    `from: ${msg.from() ? msg.from().name() : null}: ${
-    msg.from() ? msg.from().id : null
+    `from: ${msg.from() ? msg.from().name() : null}: ${msg.from() ? msg.from().id : null
     }`
   )
   if (msg.type() == Message.Type.Text) {
@@ -33,7 +32,7 @@ async function onMessage(msg) {
       const group = await Group.findOne({ id: room.id }, { control: 1 })
       if (!group || !group.control) return
       if (await msg.mentionSelf()) { //@自己
-        let self = await msg.to()
+        let self = await msg.from()
         self = '@' + self.name()
         let sendText = msg.text().replace(self, '')
         sendText = sendText.trim()

@@ -67,7 +67,7 @@ $ cnpm i
 ```
 ## 本地单机插件版本
 
-`直接进入local目录，也可将此目录单独移出至其他地方，修改配置文件config.js，再node index 启动即可`
+`直接进入bot目录，也可将此目录单独移出至其他地方，修改配置文件config.js，再node index 启动即可`
 
 ## web版本
 
