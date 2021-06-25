@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
     "build": "nuxt build",
-    "start": "NODE_ENV=production node server/index.js",
+    "start": "pm2 start pm2.config.js  --env production",
     "generate": "nuxt generate"
   },
   "dependencies": {

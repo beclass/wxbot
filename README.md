@@ -127,7 +127,7 @@ $ cnpm i -g pm2
 ```
 #### 启动
 ```Shell
-$ pm2 start pm2.config.js
+$ npm start
 ```
 
 ## 最后
