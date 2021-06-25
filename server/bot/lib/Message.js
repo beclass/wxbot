@@ -3,7 +3,7 @@
  * @Author: lwp
  * @Date: 2020-04-26 15:27:24
  * @LastEditors: lwp
- * @LastEditTime: 2020-05-31 18:02:12
+ * @LastEditTime: 2021-06-25 10:24:30
  */
 const { Message } = require('wechaty')
 const { Group } = require('../../models/group')
@@ -23,7 +23,7 @@ async function onMessage(msg) {
   console.log("=============================")
   console.log(`msg : ${msg}`)
   console.log(
-    `from: ${msg.from() ? msg.from().name() : null}: ${msg.from() ? msg.from().id : null
+    `from: ${msg.talker() ? msg.talker().name() : null}: ${msg.talker() ? msg.talker().id : null
     }`
   )
   if (msg.type() == Message.Type.Text) {
@@ -32,7 +32,7 @@ async function onMessage(msg) {
       const group = await Group.findOne({ id: room.id }, { control: 1 })
       if (!group || !group.control) return
       if (await msg.mentionSelf()) { //@自己
-        let self = await msg.from()
+        let self = await msg.talker()
         self = '@' + self.name()
         let sendText = msg.text().replace(self, '')
         sendText = sendText.trim()
@@ -58,7 +58,7 @@ async function onMessage(msg) {
         if (person) {
           content = `@${person} ${content}`
         } else {
-          content = `「${msg.from().name()}：${msg.text()}」\n- - - - - - - - - - - - - - -\n${content}`
+          content = `「${msg.talker().name()}：${msg.text()}」\n- - - - - - - - - - - - - - -\n${content}`
         }
         room.say(content)
       }
@@ -85,11 +85,11 @@ async function isRoomName(msg) {
   if (group) {
     //通过群聊id获取群聊实例
     const room = await bot.Room.find({ id: group.id })
-    if (await room.has(msg.from())) {
+    if (await room.has(msg.talker())) {
       await msg.say('您已经在群聊中了')
       return true
     }
-    await room.add(msg.from())
+    await room.add(msg.talker())
     await msg.say('已发送群邀请')
     return true
   }
